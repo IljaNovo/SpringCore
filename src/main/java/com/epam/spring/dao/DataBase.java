@@ -1,14 +1,19 @@
 package com.epam.spring.dao;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.epam.spring.users.User;
+import com.epam.spring.data.Event;
+import com.epam.spring.data.User;
+import com.epam.spring.utils.Rating;
 
 public class DataBase {
-	private static Map<Integer, User> events = new HashMap<Integer, User>();
+	private static Map<Integer, User> users = new HashMap<Integer, User>();
+	private static Map<Integer, Event> events = new HashMap<Integer, Event>();
 	private static DataBase base;
-	private static int count = 0;
+	private static int countUsers = 0;
+	private static int countEvents = 0;
 	
 	private DataBase() {}
 	
@@ -19,17 +24,31 @@ public class DataBase {
 		return base;
 	}
 	
-	public static void set(String name, String email) {
-		events.put(count, new User(count, name, email));
-		++count;
+	public static void setUser(String name, String email) {
+		users.put(countUsers, new User(countUsers, name, email));
+		++countUsers;
 	}
 	
-	public static void delete(int index) {
+	public static void deleteUser(int index) {
+		users.remove(index);
+		--countUsers;
+	}
+	
+	public static void setEvent(String name, double price, Rating rating, Date date) {
+		events.put(countEvents, new Event(name, price, rating, date));
+		++countEvents;
+	}
+	
+	public static void deleteEvent(int index) {
 		events.remove(index);
-		--count;
+		--countEvents;
 	}
 	
-	public static Map<Integer, User> getBase() {
+	public static Map<Integer, Event> getEventsBase() {
 		return events;
+	}
+	
+	public static Map<Integer, User> getUsersBase() {
+		return users;
 	}
 }

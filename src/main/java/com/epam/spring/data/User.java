@@ -1,4 +1,4 @@
-package com.epam.spring.users;
+package com.epam.spring.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,20 +7,24 @@ public class User {
 	private int id;
 	private String name;
 	private String email;
-	private List<Ticket> tickets;
+	private List<Event> tickets;
 	
 	public User(int id, String name, String email) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.tickets = new ArrayList<Ticket>();
+		this.tickets = new ArrayList<Event>();
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
     
-	public void addTicket(Ticket newTicket) {
+	public List<Event> getTickets() {
+		return this.tickets;
+	}
+	
+	public void addTicket(Event newTicket) {
 		this.tickets.add(newTicket);
 	}
 	
@@ -33,7 +37,7 @@ public class User {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -41,6 +45,6 @@ public class User {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 }

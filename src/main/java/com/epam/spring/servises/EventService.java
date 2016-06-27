@@ -1,12 +1,17 @@
 package com.epam.spring.servises;
 
+import java.util.Date;
+
+import com.epam.spring.dao.DataBase;
+import com.epam.spring.utils.Rating;
+
 public class EventService {
-	public void create() {
-		
+	public void create(String name, double price, Rating rating, Date date) {
+		DataBase.setEvent(name, price, rating, date);
 	}
 	
-	public void remove() {
-		
+	public void remove(int index) {
+		DataBase.deleteEvent(index);
 	}
 	
 	public String getByName() {

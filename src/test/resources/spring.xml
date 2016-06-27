@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:auditoriums.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="auditorium-servise" class="com.epam.spring.servises.AuditoriumService">
+		<constructor-arg value="${auditorium_one.name}"/>
+		<constructor-arg value="${auditorium_one.seats_count}"/>
+		<constructor-arg value="${auditorium_one.vip_seats}"/>
+	</bean>
+
+</beans>
