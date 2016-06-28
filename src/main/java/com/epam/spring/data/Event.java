@@ -1,16 +1,18 @@
 package com.epam.spring.data;
 
-import java.util.Date;
 
+import com.epam.spring.movie.date.MovieDate;
 import com.epam.spring.utils.Rating;
 
 public class Event {
+	private int id;
 	private String name;
 	private double price;
 	private Rating rating;
-	private Date date;
+	private MovieDate date;
 	
-	public Event(String name, double price, Rating rating, Date date) {
+	public Event(int id, String name, double price, Rating rating, MovieDate date) {
+		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.rating = rating;
@@ -21,31 +23,15 @@ public class Event {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public double getPrice() {
-		return this.price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
+		return price;
 	}
 
 	public Rating getRating() {
-		return this.rating;
+		return rating;
 	}
 
-	public void setRating(Rating rating) {
-		this.rating = rating;
-	}
-
-	public Date getDate() {
-		return this.date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
+	public MovieDate getDate() {
+		return date;
 	}
 }
