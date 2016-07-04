@@ -1,28 +1,15 @@
 package com.epam.spring.data;
 
-import com.epam.spring.movie.date.MovieDate;
 
 public class Ticket {
-	private int id;
-	private Event event;
 	private double ticketPrice;
 	private String seat;
-	private MovieDate date;
+	private Session dataOfSession;
 	
-	public Ticket(int id, Event event, double ticketPrice, String seat, MovieDate date) {
-		this.id = id;
-		this.event = event;
+	public Ticket(double ticketPrice, String seat, Session dataOfSession) {
 		this.ticketPrice = ticketPrice;
 		this.seat = seat;
-		this.date = date;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public Event getEvent() {
-		return event;
+		this.dataOfSession = dataOfSession;
 	}
 
 	public double getTicketPrice() {
@@ -33,8 +20,8 @@ public class Ticket {
 		return seat;
 	}
 
-	public MovieDate getDate() {
-		return date;
+	public Session getDataOfSession() {
+		return dataOfSession;
 	}
 }
 
