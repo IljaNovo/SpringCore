@@ -4,36 +4,47 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SimpleCounter implements Counter {
+public class SimpleCounter{
 	
-	private Map<DataType, Integer> countsOfData;
+	private static Map<DataType, Integer> countsOfData;
+	private static SimpleCounter elem;
 	
-	public SimpleCounter(List<DataType> dataTypes) {
-		this.countsOfData = new HashMap<DataType, Integer>();
+	private SimpleCounter() {
+	}
+	
+	public static void addListDataType(List<DataType> dataTypes) {
+		countsOfData = new HashMap<DataType, Integer>();
 		for (int i = 0; i < dataTypes.size(); ++i) {
-			this.countsOfData.put(dataTypes.get(i), 0);
+			countsOfData.put(dataTypes.get(i), 0);
 		}
 	}
 	
-	public int getCount(DataType data) {
-		return this.countsOfData.get(data);
+	public static SimpleCounter instanse() {
+		if (elem == null) {
+			elem = new SimpleCounter();
+		}
+		return elem;
 	}
 	
-	public void increase(DataType data) {
-		this.countsOfData.put(data, this.countsOfData.get(data) + 1);
+	public static int getCount(DataType data) {
+		return countsOfData.get(data);
 	}
 	
-	public void reduce(DataType data) {
-		this.countsOfData.put(data, this.countsOfData.get(data) - 1);
+	public static void increase(DataType data) {
+		countsOfData.put(data, countsOfData.get(data) + 1);
 	}
 	
-	public void reset(DataType data) {
-		this.countsOfData.put(data, 0);
+	public static void reduce(DataType data) {
+		countsOfData.put(data, countsOfData.get(data) - 1);
 	}
 	
-	public void addDataType(DataType data) {
-		if (this.countsOfData.get(data) != null) {
-			this.countsOfData.put(data, 0);
+	public static void reset(DataType data) {
+		countsOfData.put(data, 0);
+	}
+	
+	public static void addDataType(DataType data) {
+		if (countsOfData.get(data) != null) {
+			countsOfData.put(data, 0);
 		}
 	}
 }
