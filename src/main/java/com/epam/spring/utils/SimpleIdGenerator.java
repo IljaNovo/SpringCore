@@ -4,25 +4,36 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SimpleIdGenerator implements IdGenerator{
+public class SimpleIdGenerator{
 
-	private Map<DataType, Integer> idOfData;
+	private static Map<DataType, Integer> idOfData = new HashMap<DataType, Integer>();
+	private static SimpleIdGenerator elem;
 	
-	public SimpleIdGenerator(List<DataType> dataTypes) {
-		this.idOfData = new HashMap<DataType, Integer>();
+	private SimpleIdGenerator() {
+	}
+	
+	public static SimpleIdGenerator instance() {
+		if (elem == null) {
+			elem = new SimpleIdGenerator();
+		}
+		return elem;
+	}
+	
+	public static void addListDataTypes(List<DataType> dataTypes) {
+		idOfData = new HashMap<DataType, Integer>();
 		for (int i = 0; i < dataTypes.size(); ++i) {
-			this.idOfData.put(dataTypes.get(i), 0);
+			idOfData.put(dataTypes.get(i), 0);
 		}
 	}
 	
-	public int generate(DataType data) {
-	    this.idOfData.put(data, this.idOfData.get(data) + 1);
-	    return this.idOfData.get(data);
+	public static int generate(DataType data) {
+	    idOfData.put(data, idOfData.get(data) + 1);
+	    return idOfData.get(data);
 	}
 
-	public void addDataType(DataType data) {
-		if (this.idOfData.get(data) != null) {
-			this.idOfData.put(data, 0);
+	public static void addDataType(DataType data) {
+		if (idOfData.get(data) != null) {
+			idOfData.put(data, 0);
 		}
 	}
 }
