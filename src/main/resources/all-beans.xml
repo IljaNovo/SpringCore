@@ -9,29 +9,32 @@
 	<import resource="users.xml" />
 	<import resource="auditoriums.xml" />
 
-	<bean id="dao" class="com.epam.spring.dao.MapDataBase" />
+	<import resource="dao.xml"/>
 
 	<bean id="discount-servise" class="com.epam.spring.servises.DiscountService">
 		<constructor-arg>
 			<list>
 				<bean class="com.epam.spring.calculating.BirthdayDiscountStrategy" />
 				<bean class="com.epam.spring.calculating.Every10thTicketDiscountStrategy">
-					<constructor-arg ref="dao" />
+					<constructor-arg ref="map_transaction_dao" />
 				</bean>
 			</list>
 		</constructor-arg>
 	</bean>
 
-	<bean id="event-servise" class="com.epam.spring.servises.UserService">
-		<constructor-arg ref="dao" />
+	<bean id="event-servise" class="com.epam.spring.servises.EventService">
+		<constructor-arg ref="map_event_dao" />
+		<constructor-arg ref="map_session_dao" />
 	</bean>
 
 	<bean id="user-servise" class="com.epam.spring.servises.UserService">
-		<constructor-arg ref="dao" />
+		<constructor-arg ref="map_user_dao" />
+		<constructor-arg ref="map_ticket_dao" />
 	</bean>
 
 	<bean id="booking-servise" class="com.epam.spring.servises.BookingService">
-		<constructor-arg ref="dao" />
+		<constructor-arg ref="map_transaction_dao" />
+		<constructor-arg ref="map_ticket_dao" />
 	</bean>
 
 	<bean id="auditorium-servise" class="com.epam.spring.servises.AuditoriumService">
