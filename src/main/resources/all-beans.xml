@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<import resource="events.xml" />
+	<import resource="users.xml" />
+	<import resource="auditoriums.xml" />
+
+	<bean id="dao" class="com.epam.spring.dao.MapDataBase" />
+
+	<bean id="discount-servise" class="com.epam.spring.servises.DiscountService">
+		<constructor-arg>
+			<list>
+				<bean class="com.epam.spring.calculating.BirthdayDiscountStrategy" />
+				<bean class="com.epam.spring.calculating.Every10thTicketDiscountStrategy">
+					<constructor-arg ref="dao" />
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="event-servise" class="com.epam.spring.servises.UserService">
+		<constructor-arg ref="dao" />
+	</bean>
+
+	<bean id="user-servise" class="com.epam.spring.servises.UserService">
+		<constructor-arg ref="dao" />
+	</bean>
+
+	<bean id="booking-servise" class="com.epam.spring.servises.BookingService">
+		<constructor-arg ref="dao" />
+	</bean>
+
+	<bean id="auditorium-servise" class="com.epam.spring.servises.AuditoriumService">
+		<constructor-arg>
+			<list>
+				<ref bean="auditorium_one" />
+				<ref bean="auditorium_two" />
+				<ref bean="auditorium_three" />
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>
