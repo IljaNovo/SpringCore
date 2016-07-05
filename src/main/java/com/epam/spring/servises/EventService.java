@@ -7,11 +7,11 @@ import java.util.List;
 import com.epam.spring.dao.MapDataBase;
 import com.epam.spring.data.Auditorium;
 import com.epam.spring.data.Event;
-import com.epam.spring.movie.date.MovieDate;
+import com.epam.spring.movie.date.CustomerDate;
 import com.epam.spring.utils.Rating;
 
 public class EventService {
-	public void create(String name, double price, Rating rating, MovieDate date) {
+	public void create(String name, double price, Rating rating, CustomerDate date) {
 		MapDataBase.instanse().setEvent(name, price, rating, date);
 	}
 	
@@ -44,7 +44,7 @@ public class EventService {
 		return "";
 	}
 	
-	public void assignAuditorium(Event event, Auditorium auditorium, MovieDate date) {
+	public void assignAuditorium(Event event, Auditorium auditorium, CustomerDate date) {
 		
 	}
 }
