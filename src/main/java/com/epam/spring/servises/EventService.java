@@ -1,50 +1,40 @@
 package com.epam.spring.servises;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.spring.dao.MapDataBase;
+import com.epam.spring.dao.SpringCoreDAO;
 import com.epam.spring.data.Auditorium;
 import com.epam.spring.data.Event;
+import com.epam.spring.data.Session;
 import com.epam.spring.movie.date.CustomerDate;
 import com.epam.spring.utils.Rating;
 
 public class EventService {
-	public void create(String name, double price, Rating rating, CustomerDate date) {
-		MapDataBase.instanse().setEvent(name, price, rating, date);
+	
+	private SpringCoreDAO dataBase;
+	
+	public EventService(SpringCoreDAO dataBase) {
+		this.dataBase = dataBase;
+	}
+	
+	public void create(String name, double price, Rating rating) {
+		this.dataBase.setEvent(name, price, rating);
 	}
 	
 	public void remove(int index) {
-		MapDataBase.instanse().deleteEvent(index);
+		this.dataBase.deleteEvent(index);
 	}
 	
-	public Event getByName(String name) {
-		for (Integer key: MapDataBase.instanse().getAllEvents().keySet()) {
-			if (MapDataBase.instanse().getAllEvents().get(key).getName().equals(name)) {
-				return MapDataBase.instanse().getAllEvents().get(key);
-			}
-		}
-		return null;
+	public List<Session> getForDateRange(CustomerDate from, CustomerDate to) {
+		return dataBase.getForDateRange(from, to);
 	}
 	
-	public List<Event> getAll() {
-		List<Event> events = new ArrayList<Event>(); 
-		for (Integer key: MapDataBase.instanse().getAllEvents().keySet()) {
-			events.add(MapDataBase.instanse().getAllEvents().get(key));
-		}
-		return events;
+	public List<Session> getNextEvents(CustomerDate to) {
+		return dataBase.getNextEvents(to);
 	}
 	
-	public String getForDateRange(String from, String to) {
-		return "";
-	}
-	
-	public String getNextEvents(String to) {
-		return "";
-	}
-	
-	public void assignAuditorium(Event event, Auditorium auditorium, CustomerDate date) {
-		
+	public void assignAuditorium(Event film, Auditorium room, CustomerDate date) {
+		this.dataBase.setSessions(film, room, date);
 	}
 }

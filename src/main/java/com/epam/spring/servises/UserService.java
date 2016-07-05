@@ -1,9 +1,7 @@
 package com.epam.spring.servises;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.spring.dao.MapDataBase;
 import com.epam.spring.dao.SpringCoreDAO;
 import com.epam.spring.data.Ticket;
 import com.epam.spring.data.User;
