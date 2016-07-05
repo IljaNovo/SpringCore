@@ -8,7 +8,7 @@ public class User {
 	private String email;
 	private CustomerDate birthday;
 	
-	public User(int id, String name, String email, CustomerDate birthdate) {
+	public User(String name, String email, CustomerDate birthdate) {
 		this.name = name;
 		this.email = email;
 		this.birthday = birthdate;
