@@ -57,4 +57,8 @@ public interface SpringCoreDAO {
 	List<Double> getTicketPrice(Event film, CustomerDate day, List<String> seats, User customer);
 	
 	List<Ticket> getTicketsForEvent(Event film, CustomerDate date);
+	
+	List<Session> getForDateRange(CustomerDate from, CustomerDate to);
+	
+	List<Session> getNextEvents(CustomerDate to);
 }

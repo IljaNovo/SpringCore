@@ -242,4 +242,31 @@ public class MapDataBase implements SpringCoreDAO {
 		}
 		return false;
 	}
+
+	public List<Session> getForDateRange(CustomerDate from, CustomerDate to) {
+		List<Session> films = new ArrayList<Session>();
+		
+		for (Integer key : this.sessions.keySet()) {
+			if (this.sessions.get(key).getDate().getTimeInMillis() >= from.getTimeInMillis() &&
+				this.sessions.get(key).getDate().getTimeInMillis() <= to.getTimeInMillis()) {
+				films.add(this.sessions.get(key));
+			}
+		}
+		return films;
+	}
+
+	public List<Session> getNextEvents(CustomerDate to) {
+		List<Session> films = new ArrayList<Session>();
+		
+		CustomerDate date = new CustomerDate();
+		
+		for (Integer key : this.sessions.keySet()) {
+			if (date.getTimeInMillis() <= to.getTimeInMillis()) {
+				films.add(this.sessions.get(key));
+			}
+		}
+		return films;
+	}
+	
+	
 }
