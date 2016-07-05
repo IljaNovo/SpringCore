@@ -1,7 +1,7 @@
 package com.epam.spring.data;
 
 
-import com.epam.spring.movie.date.CustomerDate;
+import com.epam.spring.date.CustomerDate;
 
 public class User {
 	private String name;

@@ -5,12 +5,12 @@ import java.util.Map;
 
 import com.epam.spring.data.Auditorium;
 import com.epam.spring.data.Event;
+import com.epam.spring.data.Rating;
 import com.epam.spring.data.Session;
 import com.epam.spring.data.Ticket;
 import com.epam.spring.data.Transaction;
 import com.epam.spring.data.User;
-import com.epam.spring.movie.date.CustomerDate;
-import com.epam.spring.utils.Rating;
+import com.epam.spring.date.CustomerDate;
 
 public interface SpringCoreDAO {
 

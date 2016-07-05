@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.epam.spring.data.DataType;
+
 public class SimpleIdGenerator {
 
 	private static Map<DataType, Integer> idOfData = new HashMap<DataType, Integer>();

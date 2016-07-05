@@ -1,4 +1,4 @@
-package com.epam.spring.movie.date;
+package com.epam.spring.date;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

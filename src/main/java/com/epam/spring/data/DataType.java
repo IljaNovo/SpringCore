@@ -1,4 +1,4 @@
-package com.epam.spring.utils;
+package com.epam.spring.data;
 
 public enum DataType {
 	EVENT,

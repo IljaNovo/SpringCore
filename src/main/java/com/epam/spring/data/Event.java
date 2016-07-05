@@ -1,9 +1,6 @@
 package com.epam.spring.data;
 
 
-import com.epam.spring.movie.date.CustomerDate;
-import com.epam.spring.utils.Rating;
-
 public class Event {
 	private String name;
 	private double price;

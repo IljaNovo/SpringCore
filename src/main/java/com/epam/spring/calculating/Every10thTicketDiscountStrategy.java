@@ -4,7 +4,7 @@ import com.epam.spring.dao.MapDataBase;
 import com.epam.spring.dao.SpringCoreDAO;
 import com.epam.spring.data.Event;
 import com.epam.spring.data.User;
-import com.epam.spring.movie.date.CustomerDate;
+import com.epam.spring.date.CustomerDate;
 
 public class Every10thTicketDiscountStrategy implements DiscountStrategy{
 

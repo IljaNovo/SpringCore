@@ -6,9 +6,9 @@ import java.util.List;
 import com.epam.spring.dao.SpringCoreDAO;
 import com.epam.spring.data.Auditorium;
 import com.epam.spring.data.Event;
+import com.epam.spring.data.Rating;
 import com.epam.spring.data.Session;
-import com.epam.spring.movie.date.CustomerDate;
-import com.epam.spring.utils.Rating;
+import com.epam.spring.date.CustomerDate;
 
 public class EventService {
 	
