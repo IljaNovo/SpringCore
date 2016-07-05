@@ -34,7 +34,7 @@ public class SimpleIdGenerator {
 	}
 
 	public void addDataType(DataType data) {
-		if (idOfData.get(data) != null) {
+		if (idOfData.get(data) == null) {
 			idOfData.put(data, 0);
 		}
 	}

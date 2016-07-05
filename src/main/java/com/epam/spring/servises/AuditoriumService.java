@@ -12,12 +12,8 @@ public class AuditoriumService {
 		this.auditoriums = auditoriums;
 	}
 
-	public List<String> getAuditoriums() {
-		List<String> audirotiumsNames = new ArrayList<String>();
-		for(int i = 0; i < auditoriums.size(); ++i) {
-			audirotiumsNames.add(this.auditoriums.get(i).getName());
-		}
-		return audirotiumsNames;
+	public List<Auditorium> getAuditoriums() {
+		return this.auditoriums;
 	}
 	
 	public List<Integer> getSeatsNumber() {

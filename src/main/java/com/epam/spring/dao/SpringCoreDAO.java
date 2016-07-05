@@ -26,7 +26,7 @@ public interface SpringCoreDAO {
 
 	Map<Integer, Session> getSessions();
 
-	void setTicket(double ticketPrice, String seat, Session dataOfSession);
+	void setTicket(Ticket order);
 
 	void deleteTicket(int index);
 

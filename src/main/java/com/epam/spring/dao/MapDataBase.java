@@ -1,6 +1,7 @@
 package com.epam.spring.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,18 +23,14 @@ public class MapDataBase implements SpringCoreDAO {
 	private Map<Integer, Ticket> tickets;
 	private Map<Integer, Transaction> transactions;
 	private Map<Integer, Session> sessions;
-
-	public MapDataBase(Map<Integer, User> users, 
-					   Map<Integer, Event> events, 
-					   Map<Integer, Ticket> tickets,
-					   Map<Integer, Transaction> transactions, 
-					   Map<Integer, Session> sessions) {
-		this.users = users;
-		this.events = events;
-		this.tickets = tickets;
-		this.transactions = transactions;
-		this.sessions = sessions;
-
+	
+	public MapDataBase() {
+		this.users = new HashMap<Integer, User>();
+		this.events = new HashMap<Integer, Event>();
+		this.tickets = new HashMap<Integer, Ticket>();
+		this.transactions = new HashMap<Integer, Transaction>();
+		this.sessions = new HashMap<Integer, Session>();
+		
 		this.initCounter();
 		this.initIdGenerater();
 	}
@@ -84,9 +81,9 @@ public class MapDataBase implements SpringCoreDAO {
 		return sessions;
 	}
 
-	public void setTicket(double ticketPrice, String seat, Session dataOfSession) {
+	public void setTicket(Ticket order) {
 		tickets.put(SimpleIdGenerator.instanse().generate(DataType.TICKET), 
-				    new Ticket(ticketPrice, seat, dataOfSession));
+				    order);
 		SimpleCounter.instanse().increase(DataType.TICKET);
 	}
 

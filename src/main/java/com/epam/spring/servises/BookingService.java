@@ -11,7 +11,7 @@ import com.epam.spring.date.CustomerDate;
 public class BookingService {
 
 	private SpringCoreDAO dataBase;
-
+	
 	public BookingService(SpringCoreDAO dataBase) {
 		this.dataBase = dataBase;
 	}
@@ -21,6 +21,7 @@ public class BookingService {
 	}
 
 	public void bookTicket(User customer, Ticket order) {
+		this.dataBase.setTicket(order);
 		this.dataBase.setTrancaction(customer, order);
 	}
 

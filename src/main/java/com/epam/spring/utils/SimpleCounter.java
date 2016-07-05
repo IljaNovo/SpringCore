@@ -8,7 +8,7 @@ import com.epam.spring.data.DataType;
 
 public class SimpleCounter {
 
-	private static Map<DataType, Integer> countsOfData;
+	private static Map<DataType, Integer> countsOfData = new HashMap<DataType, Integer>();
 	private static SimpleCounter elem;
 
 	private SimpleCounter() {
@@ -45,7 +45,7 @@ public class SimpleCounter {
 	}
 
 	public void addDataType(DataType data) {
-		if (countsOfData.get(data) != null) {
+		if (countsOfData.get(data) == null) {
 			countsOfData.put(data, 0);
 		}
 	}
