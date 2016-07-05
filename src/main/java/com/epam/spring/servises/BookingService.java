@@ -2,7 +2,8 @@ package com.epam.spring.servises;
 
 import java.util.List;
 
-import com.epam.spring.dao.SpringCoreDAO;
+import com.epam.spring.dao.interfaces.TicketDao;
+import com.epam.spring.dao.interfaces.TransactionDao;
 import com.epam.spring.data.Event;
 import com.epam.spring.data.Ticket;
 import com.epam.spring.data.User;
@@ -10,22 +11,25 @@ import com.epam.spring.date.CustomerDate;
 
 public class BookingService {
 
-	private SpringCoreDAO dataBase;
+	private TransactionDao transactDataBase;
+	private TicketDao ticketDataBase;
 	
-	public BookingService(SpringCoreDAO dataBase) {
-		this.dataBase = dataBase;
+	
+	public BookingService(TransactionDao transactDataBase, TicketDao ticketDataBase) {
+		this.transactDataBase = transactDataBase;
+		this.ticketDataBase = ticketDataBase;
 	}
 
 	public List<Double> getTicketPrice(Event film, CustomerDate day, List<String> seats, User customer) {
-		return dataBase.getTicketPrice(film, day, seats, customer);
+		return transactDataBase.getTicketPrice(film, day, seats, customer);
 	}
 
 	public void bookTicket(User customer, Ticket order) {
-		this.dataBase.setTicket(order);
-		this.dataBase.setTrancaction(customer, order);
+		this.ticketDataBase.setTicket(order);
+		this.transactDataBase.setTrancaction(customer, order);
 	}
 
 	public List<Ticket> getTicketsForEvent(Event film, CustomerDate date) {
-		return dataBase.getTicketsForEvent(film, date);
+		return ticketDataBase.getTicketsForEvent(film, date);
 	}
 }

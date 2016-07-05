@@ -9,7 +9,7 @@ import com.epam.spring.date.CustomerDate;
 
 public class DiscountService {
 	
-	List<DiscountStrategy> strategy;
+	private List<DiscountStrategy> strategy;
 	
 	public DiscountService(List<DiscountStrategy> strategy) {
 		this.strategy = strategy;

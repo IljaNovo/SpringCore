@@ -1,19 +1,18 @@
 package com.epam.spring.calculating;
 
-import com.epam.spring.dao.MapDataBase;
-import com.epam.spring.dao.SpringCoreDAO;
+import com.epam.spring.dao.interfaces.TransactionDao;
 import com.epam.spring.data.Event;
 import com.epam.spring.data.User;
 import com.epam.spring.date.CustomerDate;
 
 public class Every10thTicketDiscountStrategy implements DiscountStrategy{
 	
-	private SpringCoreDAO dataBase;
+	private TransactionDao dataBase;
 	private static final double NO_DISCOUNT = 1;
 	private static final double YES_DISCOUNT = 0.5;
 	
 	
-	public Every10thTicketDiscountStrategy(SpringCoreDAO dataBase) {
+	public Every10thTicketDiscountStrategy(TransactionDao dataBase) {
 		this.dataBase = dataBase;
 	}
 

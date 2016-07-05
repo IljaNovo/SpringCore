@@ -2,39 +2,42 @@ package com.epam.spring.servises;
 
 import java.util.List;
 
-import com.epam.spring.dao.SpringCoreDAO;
+import com.epam.spring.dao.interfaces.TicketDao;
+import com.epam.spring.dao.interfaces.UserDao;
 import com.epam.spring.data.Ticket;
 import com.epam.spring.data.User;
 import com.epam.spring.date.CustomerDate;
 
 public class UserService {
-	private SpringCoreDAO dataBase;
+	private UserDao userDataBase;
+	private TicketDao ticketDataBase;
 	
-	public UserService(SpringCoreDAO dataBase) {
-		this.dataBase = dataBase;
+	public UserService(UserDao userDataBase, TicketDao ticketDataBase) {
+		this.userDataBase = userDataBase;
+		this.ticketDataBase = ticketDataBase;
 	}
 
 	public void register(String name, String email, CustomerDate birthdate) {
-		dataBase.setUser(name, email, birthdate);
+		userDataBase.setUser(name, email, birthdate);
 	}
 	
 	public void remove(int index) {
-		dataBase.deleteUser(index);
+		userDataBase.deleteUser(index);
 	}
 	
 	public User getById(int index) {
-		return dataBase.getUserById(index);
+		return userDataBase.getUserById(index);
 	}
 	
 	public User getUserByEmail(String email) {
-		return dataBase.getUserByEmail(email);
+		return userDataBase.getUserByEmail(email);
 	}
 	
 	public List<User> getUsersByName(String name) {
-		return dataBase.getUserByName(name);
+		return userDataBase.getUserByName(name);
 	}
 	
 	public List<Ticket> getBookedTickets() {
-		return dataBase.getBookedTickets();
+		return ticketDataBase.getBookedTickets();
 	}
 }
