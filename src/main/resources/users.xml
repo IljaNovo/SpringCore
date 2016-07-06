@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="user1" class="com.epam.spring.data.User">
+		<constructor-arg value="Vasya"/>
+		<constructor-arg value="vasya@epam.com"/>
+		<constructor-arg>
+			<bean class="com.epam.spring.date.CustomerDate">
+				<constructor-arg value="1993"/>
+				<constructor-arg value="02"/>
+				<constructor-arg value="24"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="user2" class="com.epam.spring.data.User">
+		<constructor-arg value="Gena"/>
+		<constructor-arg value="gena@epam.com"/>
+		<constructor-arg>
+			<bean class="com.epam.spring.date.CustomerDate">
+				<constructor-arg value="1995"/>
+				<constructor-arg value="04"/>
+				<constructor-arg value="20"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="user3" class="com.epam.spring.data.User">
+		<constructor-arg value="Vasya"/>
+		<constructor-arg value="vasya@epam.com"/>
+		<constructor-arg>
+			<bean class="com.epam.spring.date.CustomerDate">
+				<constructor-arg value="1994"/>
+				<constructor-arg value="10"/>
+				<constructor-arg value="5"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+</beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="map_event_dao" class="com.epam.spring.dao.database.MapEventDao" />
+
+	<bean id="map_session_dao" class="com.epam.spring.dao.database.MapSessionDao" />
+
+	<bean id="map_ticket_dao" class="com.epam.spring.dao.database.MapTicketDao" />
+
+	<bean id="map_transaction_dao" class="com.epam.spring.dao.database.MapTransactionDao" />
+
+	<bean id="map_user_dao" class="com.epam.spring.dao.database.MapUserDao" />
+
+</beans>
