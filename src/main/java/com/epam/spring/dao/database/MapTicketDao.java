@@ -52,11 +52,6 @@ public class MapTicketDao implements TicketDao {
 		return new ArrayList<Ticket>(tickets.values());
 	}
 
-	public List<Double> getTicketPrice(Event film, CustomerDate day, List<String> seats, User customer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public List<Ticket> getTicketsForEvent(Event film, CustomerDate date) {
 		List<Ticket> bookedTickets = new ArrayList<Ticket>();
 
