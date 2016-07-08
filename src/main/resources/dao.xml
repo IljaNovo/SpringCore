@@ -19,4 +19,6 @@
 	
 	<bean id="map_counter_by_ticket_dao" class="com.epam.spring.dao.database.MapCounterByTicketsDao" />
 	
+	<bean id="map_discount_dao" class="com.epam.spring.dao.database.MapDiscountDao" />
+	
 </beans>

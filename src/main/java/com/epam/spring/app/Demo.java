@@ -6,6 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.epam.spring.dao.database.MapCounterByEventNameDao;
 import com.epam.spring.dao.database.MapCounterByPriceDao;
 import com.epam.spring.dao.database.MapCounterByTicketsDao;
+import com.epam.spring.dao.database.MapDiscountDao;
 import com.epam.spring.dao.database.MapEventDao;
 import com.epam.spring.data.Auditorium;
 import com.epam.spring.data.Event;
@@ -59,12 +60,8 @@ public class Demo {
         
         MapCounterByTicketsDao mcbend = (MapCounterByTicketsDao)actx.getBean("map_counter_by_ticket_dao");
         System.out.println(mcbend.getCount(film));
-		
         
-        
-		//MapCounterByEventNameDao counter = (MapCounterByEventNameDao) actx.getBean("map_counter_by_event_name_dao");
-		
-		//System.out.println(counter.getCount(film));
-		
+        MapDiscountDao mdd = (MapDiscountDao) actx.getBean("map_discount_dao");
+        System.out.println(mdd.getSpecificDiscount(customer));
 	}
 }

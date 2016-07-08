@@ -11,6 +11,9 @@ public class DiscountService {
 	
 	private List<DiscountStrategy> strategy;
 	
+	public DiscountService() {
+	}
+	
 	public DiscountService(List<DiscountStrategy> strategy) {
 		this.strategy = strategy;
 	}
@@ -20,7 +23,7 @@ public class DiscountService {
 		double currentDiscount = 1;
 		
 		for (int i = 0; i < strategy.size(); ++i) {
-			currentDiscount = strategy.get(i).calculate(user, event, date); 
+			currentDiscount = strategy.get(i).calculate(user, event, date);
 			if (currentDiscount < maxDiscount) {
 				maxDiscount = currentDiscount;
 			}

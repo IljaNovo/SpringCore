@@ -51,9 +51,12 @@
 	
 	<aop:config>
 		<aop:aspect id="counter" ref="counterAspect">
- 		<aop:around pointcut="execution(* com.epam.spring.servises.BookingService.bookTicket(..))" method="incByTicket" />
- 		<aop:around pointcut="execution(* com.epam.spring.servises.EventService.getEventPrice(..))" method="incByPrice" />
-		<aop:after-returning returning="obj" pointcut="execution(* com.epam.spring.servises.EventService.getEventByName(..))" method="incByEventName" />
+ 			<aop:around pointcut="execution(* com.epam.spring.servises.BookingService.bookTicket(..))" method="incByTicket" />
+ 			<aop:around pointcut="execution(* com.epam.spring.servises.EventService.getEventPrice(..))" method="incByPrice" />
+			<aop:after-returning returning="obj" pointcut="execution(* com.epam.spring.servises.EventService.getEventByName(..))" method="incByEventName" />
+		</aop:aspect>
+		<aop:aspect id="discount" ref="discountAspect">
+			<aop:around pointcut="execution(* com.epam.spring.servises.DiscountService.getDiscount(..))" method="countDiscoun"/>
 		</aop:aspect>
 	</aop:config>
 </beans>

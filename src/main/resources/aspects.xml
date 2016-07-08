@@ -11,4 +11,9 @@
 		<constructor-arg ref="map_counter_by_ticket_dao"/>
 		<constructor-arg ref="map_event_dao"></constructor-arg>
 	</bean>
+	
+	<bean id="discountAspect" class="com.epam.spring.aspects.DiscountAspect">
+		<constructor-arg ref="map_discount_dao" />
+	</bean>
+	
 </beans>
