@@ -37,7 +37,7 @@ public class Demo {
 		
 		bookServece.bookTicket(customer, order);
 		
-		System.out.print("Количество заказов на " + new CustomerDate(2000, 07, 13).getFullDate() + " : ");
+		System.out.print("Количество заказов на " + new CustomerDate(2000, 01, 13).getFullDate() + " : ");
 		System.out.println(bookServece.getTicketsForEvent(film, new CustomerDate(2000, 07, 13)).size());
 		
 	}
