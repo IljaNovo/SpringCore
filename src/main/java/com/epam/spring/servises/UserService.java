@@ -1,51 +1,43 @@
 package com.epam.spring.servises;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.spring.dao.MapDataBase;
+import com.epam.spring.dao.interfaces.TicketDao;
+import com.epam.spring.dao.interfaces.UserDao;
 import com.epam.spring.data.Ticket;
 import com.epam.spring.data.User;
-import com.epam.spring.movie.date.MovieDate;
+import com.epam.spring.date.CustomerDate;
 
 public class UserService {
+	private UserDao userDataBase;
+	private TicketDao ticketDataBase;
 	
-	public void register(String name, String email, MovieDate birthdate) {
-		MapDataBase.instanse().setUser(name, email, birthdate);
+	public UserService(UserDao userDataBase, TicketDao ticketDataBase) {
+		this.userDataBase = userDataBase;
+		this.ticketDataBase = ticketDataBase;
+	}
+
+	public void register(String name, String email, CustomerDate birthdate) {
+		userDataBase.setUser(name, email, birthdate);
 	}
 	
 	public void remove(int index) {
-		MapDataBase.instanse().deleteUser(index);
+		userDataBase.deleteUser(index);
 	}
 	
 	public User getById(int index) {
-		return MapDataBase.instanse().getAllUsers().get(index);
+		return userDataBase.getUserById(index);
 	}
 	
 	public User getUserByEmail(String email) {
-		for (Integer key: MapDataBase.instanse().getAllUsers().keySet()) {
-			if (MapDataBase.instanse().getAllUsers().get(key).getEmail().equals(email)) {
-				return MapDataBase.instanse().getAllUsers().get(key);
-			}
-		}
-		return null;
+		return userDataBase.getUserByEmail(email);
 	}
 	
 	public List<User> getUsersByName(String name) {
-		List<User> usersNames = new ArrayList<User>();
-		for (Integer key: MapDataBase.instanse().getAllUsers().keySet()) {
-			if (MapDataBase.instanse().getAllUsers().get(key).getEmail().equals(name)) {
-				usersNames.add(MapDataBase.instanse().getAllUsers().get(key));
-			}
-		}
-		return usersNames;
+		return userDataBase.getUserByName(name);
 	}
 	
 	public List<Ticket> getBookedTickets() {
-		List<Ticket> bookedTickets = new ArrayList<Ticket>();
-		for (Integer key: MapDataBase.instanse().getAllTickets().keySet()) {
-			bookedTickets.add(MapDataBase.instanse().getAllTickets().get(key));
-		}
-		return bookedTickets;
+		return ticketDataBase.getBookedTickets();
 	}
 }

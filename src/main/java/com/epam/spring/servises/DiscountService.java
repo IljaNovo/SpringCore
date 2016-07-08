@@ -5,17 +5,17 @@ import java.util.List;
 import com.epam.spring.calculating.DiscountStrategy;
 import com.epam.spring.data.Event;
 import com.epam.spring.data.User;
-import com.epam.spring.movie.date.MovieDate;
+import com.epam.spring.date.CustomerDate;
 
 public class DiscountService {
 	
-	List<DiscountStrategy> strategy;
+	private List<DiscountStrategy> strategy;
 	
 	public DiscountService(List<DiscountStrategy> strategy) {
 		this.strategy = strategy;
 	}
 	
-	public double getDiscount(User user, Event event, MovieDate date) {
+	public double getDiscount(User user, Event event, CustomerDate date) {
 		double maxDiscount = 1;
 		double currentDiscount = 1;
 		

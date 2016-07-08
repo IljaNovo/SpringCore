@@ -1,44 +1,35 @@
 package com.epam.spring.servises;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.spring.dao.MapDataBase;
+import com.epam.spring.dao.interfaces.TicketDao;
+import com.epam.spring.dao.interfaces.TransactionDao;
+import com.epam.spring.data.Event;
 import com.epam.spring.data.Ticket;
 import com.epam.spring.data.User;
-import com.epam.spring.movie.date.MovieDate;
+import com.epam.spring.date.CustomerDate;
 
 public class BookingService {
-	public List<Double> getTicketPrice(String eventName, MovieDate day,
-								 List<String> seats, User user) {
-		List<Ticket> bookedTickets = MapDataBase.instanse().getAllTiketsOfUsers().get(user);
-		List<Double> prices = new ArrayList<Double>();
-		
-		for (int i = 0; i < bookedTickets.size(); ++i) {
-			if (bookedTickets.get(i).getDate().getDayStartMovie().equals(day.getDayStartMovie()) &&
-			    bookedTickets.get(i).getEvent().getName().equals(eventName) &&
-			    seats.contains(bookedTickets.get(i).getSeat())) {
-					prices.add(bookedTickets.get(i).getTicketPrice());
-			}
-		}
-		return prices;
-	}
+
+	private TransactionDao transactDataBase;
+	private TicketDao ticketDataBase;
 	
-	public void bookTicket(User user, Ticket ticket) {
-		MapDataBase.instanse().setTicketOfUser(user, ticket);
-	}
 	
-	public List<Ticket> getTicketsForEvent(String eventName, MovieDate date) {
-		List<Ticket> bookedTickets = new ArrayList<Ticket>();
-		
-		for (Integer key: MapDataBase.instanse().getAllTickets().keySet()) {
-			Ticket currentTicket = MapDataBase.instanse().getAllTickets().get(key); 
-			
-			if (currentTicket.getEvent().getName().equals(eventName) &&
-				currentTicket.getDate().getDayStartMovie().equals(date.getDayStartMovie())) {
-					bookedTickets.add(MapDataBase.instanse().getAllTickets().get(key));
-			}
-		}
-		return bookedTickets;
+	public BookingService(TransactionDao transactDataBase, TicketDao ticketDataBase) {
+		this.transactDataBase = transactDataBase;
+		this.ticketDataBase = ticketDataBase;
+	}
+
+	public List<Double> getTicketPrice(Event film, CustomerDate day, List<String> seats, User customer) {
+		return transactDataBase.getTicketPrice(film, day, seats, customer);
+	}
+
+	public void bookTicket(User customer, Ticket order) {
+		this.ticketDataBase.setTicket(order);
+		this.transactDataBase.setTrancaction(customer, order);
+	}
+
+	public List<Ticket> getTicketsForEvent(Event film, CustomerDate date) {
+		return ticketDataBase.getTicketsForEvent(film, date);
 	}
 }

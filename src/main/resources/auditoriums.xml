@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:auditoriums.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="auditorium_one" class="com.epam.spring.data.Auditorium">
+		<constructor-arg value="${auditorium_one.name}"/>
+		<constructor-arg value="${auditorium_one.number_of_seats}"/>
+		<constructor-arg value="${auditorium_one.vip_seats}"/>
+	</bean>
+	
+	<bean id="auditorium_two" class="com.epam.spring.data.Auditorium">
+		<constructor-arg value="${auditorium_two.name}"/>
+		<constructor-arg value="${auditorium_two.number_of_seats}"/>
+		<constructor-arg value="${auditorium_two.vip_seats}"/>
+	</bean>
+	
+	<bean id="auditorium_three" class="com.epam.spring.data.Auditorium">
+		<constructor-arg value="${auditorium_three.name}"/>
+		<constructor-arg value="${auditorium_three.number_of_seats}"/>
+		<constructor-arg value="${auditorium_three.vip_seats}"/>
+	</bean>
+	
+</beans>

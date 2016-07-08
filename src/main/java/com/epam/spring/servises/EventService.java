@@ -1,50 +1,43 @@
 package com.epam.spring.servises;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.spring.dao.MapDataBase;
+import com.epam.spring.dao.interfaces.EventDao;
+import com.epam.spring.dao.interfaces.SessionDao;
 import com.epam.spring.data.Auditorium;
 import com.epam.spring.data.Event;
-import com.epam.spring.movie.date.MovieDate;
-import com.epam.spring.utils.Rating;
+import com.epam.spring.data.Rating;
+import com.epam.spring.data.Session;
+import com.epam.spring.date.CustomerDate;
 
 public class EventService {
-	public void create(String name, double price, Rating rating, MovieDate date) {
-		MapDataBase.instanse().setEvent(name, price, rating, date);
+	
+	private EventDao eventDataBase;
+	private SessionDao sessionDataBase;
+	
+	public EventService(EventDao eventDataBase, SessionDao sessionDataBase) {
+		this.eventDataBase = eventDataBase;
+		this.sessionDataBase = sessionDataBase;
+	}
+	
+	public void create(String name, double price, Rating rating) {
+		this.eventDataBase.setEvent(name, price, rating);
 	}
 	
 	public void remove(int index) {
-		MapDataBase.instanse().deleteEvent(index);
+		this.eventDataBase.deleteEvent(index);
 	}
 	
-	public Event getByName(String name) {
-		for (Integer key: MapDataBase.instanse().getAllEvents().keySet()) {
-			if (MapDataBase.instanse().getAllEvents().get(key).getName().equals(name)) {
-				return MapDataBase.instanse().getAllEvents().get(key);
-			}
-		}
-		return null;
+	public List<Session> getForDateRange(CustomerDate from, CustomerDate to) {
+		return sessionDataBase.getForDateRange(from, to);
 	}
 	
-	public List<Event> getAll() {
-		List<Event> events = new ArrayList<Event>(); 
-		for (Integer key: MapDataBase.instanse().getAllEvents().keySet()) {
-			events.add(MapDataBase.instanse().getAllEvents().get(key));
-		}
-		return events;
+	public List<Session> getNextEvents(CustomerDate to) {
+		return sessionDataBase.getNextEvents(to);
 	}
 	
-	public String getForDateRange(String from, String to) {
-		return "";
-	}
-	
-	public String getNextEvents(String to) {
-		return "";
-	}
-	
-	public void assignAuditorium(Event event, Auditorium auditorium, MovieDate date) {
-		
+	public void assignAuditorium(Event film, Auditorium room, CustomerDate date) {
+		this.sessionDataBase.setSessions(film, room, date);
 	}
 }
