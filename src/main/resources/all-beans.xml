@@ -49,6 +49,11 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<aop:config>
+		<aop:aspect id="luckyWinner" ref="luckyWinnerAspect">
+			<aop:around
+				pointcut="execution(* com.epam.spring.servises.BookingService.bookTicket(..))"
+				method="checkLucky" />
+		</aop:aspect>
 		<aop:aspect id="counter" ref="counterAspect">
 			<aop:around
 				pointcut="execution(* com.epam.spring.servises.BookingService.bookTicket(..))"
@@ -62,13 +67,8 @@
 		</aop:aspect>
 		<aop:aspect id="discount" ref="discountAspect">
 			<aop:around
-				pointcut="execution(* com.epam.spring.servises.DiscountService.getDiscount(..))"
-				method="countDiscoun" />
-		</aop:aspect>
-		<aop:aspect id="luckyWinner" ref="luckyWinnerAspect">
-			<aop:around
 				pointcut="execution(* com.epam.spring.servises.BookingService.bookTicket(..))"
-				method="checkLucky" />
+				method="countDiscoun" />
 		</aop:aspect>
 	</aop:config>
 </beans>

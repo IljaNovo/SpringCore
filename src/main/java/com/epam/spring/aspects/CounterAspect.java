@@ -28,7 +28,7 @@ public class CounterAspect {
 
 		this.byTicketBase.addEvent(((Ticket) joinpoint.getArgs()[1]).getDataOfSession().getFilm());
 		this.byTicketBase.increase(((Ticket) joinpoint.getArgs()[1]).getDataOfSession().getFilm());
-
+		System.out.println("incByTicket");
 		try {
 			obj = joinpoint.proceed();
 		} catch (Throwable e) {

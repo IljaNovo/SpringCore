@@ -22,4 +22,8 @@ public class Ticket {
 	public Session getDataOfSession() {
 		return dataOfSession;
 	}
+	
+	public void setPrice(double price) {
+		this.ticketPrice = price;
+	}
 }
