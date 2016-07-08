@@ -1,11 +1,10 @@
 package com.epam.spring.data;
 
-
 public class Event {
 	private String name;
 	private double price;
 	private Rating rating;
-	
+
 	public Event(String name, double price, Rating rating) {
 		this.name = name;
 		this.price = price;

@@ -6,8 +6,8 @@ public class Session {
 	private Event film;
 	private Auditorium room;
 	private CustomerDate date;
-	
-	public Session(Event film, Auditorium room,  CustomerDate date) {
+
+	public Session(Event film, Auditorium room, CustomerDate date) {
 		this.film = film;
 		this.room = room;
 		this.date = date;

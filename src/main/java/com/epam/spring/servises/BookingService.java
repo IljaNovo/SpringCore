@@ -13,8 +13,10 @@ public class BookingService {
 
 	private TransactionDao transactDataBase;
 	private TicketDao ticketDataBase;
-	
-	
+
+	public BookingService() {
+	}
+
 	public BookingService(TransactionDao transactDataBase, TicketDao ticketDataBase) {
 		this.transactDataBase = transactDataBase;
 		this.ticketDataBase = ticketDataBase;
@@ -26,7 +28,7 @@ public class BookingService {
 
 	public void bookTicket(User customer, Ticket order) {
 		this.ticketDataBase.setTicket(order);
-		this.transactDataBase.setTrancaction(customer, order);
+		this.transactDataBase.setTransaction(customer, order);
 	}
 
 	public List<Ticket> getTicketsForEvent(Event film, CustomerDate date) {
