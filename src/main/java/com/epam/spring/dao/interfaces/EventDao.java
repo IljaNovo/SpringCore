@@ -14,4 +14,6 @@ public interface EventDao {
 	void deleteEvent(int index);
 
 	Map<Integer, Event> getAllEvents();
+	
+	Event getEventByName(String name);
 }

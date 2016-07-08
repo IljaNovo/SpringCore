@@ -47,4 +47,13 @@ public class MapEventDao implements EventDao {
 	public Map<Integer, Event> getAllEvents() {
 		return events;
 	}
+
+	public Event getEventByName(String name) {
+		for (Event item : this.events.values()) {
+			if (item.getName().equals(name)) {
+				return item;
+			}
+		}
+		return null;
+	}
 }
