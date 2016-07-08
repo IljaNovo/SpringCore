@@ -1,11 +1,10 @@
 package com.epam.spring.data;
 
-
 public class Ticket {
 	private double ticketPrice;
 	private String seat;
 	private Session dataOfSession;
-	
+
 	public Ticket(double ticketPrice, String seat, Session dataOfSession) {
 		this.ticketPrice = ticketPrice;
 		this.seat = seat;
@@ -24,5 +23,3 @@ public class Ticket {
 		return dataOfSession;
 	}
 }
-
-

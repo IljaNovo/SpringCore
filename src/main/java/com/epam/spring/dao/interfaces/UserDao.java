@@ -12,10 +12,10 @@ public interface UserDao {
 	void deleteUser(int index);
 
 	void setUser(String name, String email, CustomerDate birthdate);
-	
+
 	User getUserById(int index);
-	
+
 	User getUserByEmail(String email);
-	
+
 	List<User> getUserByName(String name);
 }

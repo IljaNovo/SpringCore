@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 
 public class CustomerDate {
 	private Calendar time;
-	
+
 	public CustomerDate() {
 		this.time = new GregorianCalendar();
 	}
@@ -15,16 +15,16 @@ public class CustomerDate {
 	public CustomerDate(int year, int month, int dayOfMonth) {
 		this.time = new GregorianCalendar(year, month, dayOfMonth);
 	}
-	
+
 	public CustomerDate(int year, int month, int dayOfMonth, int hourOfDay, int minute, int second) {
 		this.time = new GregorianCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
 	}
-	
+
 	public String getFullDate() {
 		DateFormat df = new SimpleDateFormat("yyyy MM dd");
 		return df.format(time.getTime());
 	}
-	
+
 	public String getYear() {
 		DateFormat df = new SimpleDateFormat("yyyy");
 		return df.format(time.getTime());
@@ -54,7 +54,7 @@ public class CustomerDate {
 		DateFormat df = new SimpleDateFormat("ss");
 		return df.format(time.getTime());
 	}
-	
+
 	public long getTimeInMillis() {
 		return this.time.getTimeInMillis();
 	}

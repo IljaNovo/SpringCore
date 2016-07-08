@@ -10,13 +10,13 @@ import com.epam.spring.data.User;
 import com.epam.spring.date.CustomerDate;
 
 public interface TransactionDao {
-	void setTrancaction(User customer, Ticket order);
+	void setTransaction(User customer, Ticket order);
 
 	void deleteTransaction(int index);
 
 	Map<Integer, Transaction> getAllTransactions();
-	
+
 	int getCountTicketsOf(User customer);
-	
+
 	List<Double> getTicketPrice(Event film, CustomerDate day, List<String> seats, User customer);
 }

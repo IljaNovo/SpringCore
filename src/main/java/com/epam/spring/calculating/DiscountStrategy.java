@@ -6,5 +6,4 @@ import com.epam.spring.date.CustomerDate;
 
 public interface DiscountStrategy {
 	double calculate(User user, Event event, CustomerDate date);
-	
 }

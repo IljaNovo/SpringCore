@@ -14,8 +14,8 @@ public interface SessionDao {
 	void deleteSessions(int index);
 
 	Map<Integer, Session> getSessions();
-	
+
 	List<Session> getForDateRange(CustomerDate from, CustomerDate to);
-	
+
 	List<Session> getNextEvents(CustomerDate to);
 }

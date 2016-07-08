@@ -11,23 +11,23 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="auditorium_one" class="com.epam.spring.data.Auditorium">
-		<constructor-arg value="${auditorium_one.name}"/>
-		<constructor-arg value="${auditorium_one.number_of_seats}"/>
-		<constructor-arg value="${auditorium_one.vip_seats}"/>
+		<constructor-arg value="${auditorium_one.name}" />
+		<constructor-arg value="${auditorium_one.number_of_seats}" />
+		<constructor-arg value="${auditorium_one.vip_seats}" />
 	</bean>
-	
+
 	<bean id="auditorium_two" class="com.epam.spring.data.Auditorium">
-		<constructor-arg value="${auditorium_two.name}"/>
-		<constructor-arg value="${auditorium_two.number_of_seats}"/>
-		<constructor-arg value="${auditorium_two.vip_seats}"/>
+		<constructor-arg value="${auditorium_two.name}" />
+		<constructor-arg value="${auditorium_two.number_of_seats}" />
+		<constructor-arg value="${auditorium_two.vip_seats}" />
 	</bean>
-	
+
 	<bean id="auditorium_three" class="com.epam.spring.data.Auditorium">
-		<constructor-arg value="${auditorium_three.name}"/>
-		<constructor-arg value="${auditorium_three.number_of_seats}"/>
-		<constructor-arg value="${auditorium_three.vip_seats}"/>
+		<constructor-arg value="${auditorium_three.name}" />
+		<constructor-arg value="${auditorium_three.number_of_seats}" />
+		<constructor-arg value="${auditorium_three.vip_seats}" />
 	</bean>
-	
+
 </beans>

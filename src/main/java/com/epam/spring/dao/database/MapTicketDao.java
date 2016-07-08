@@ -15,12 +15,12 @@ import com.epam.spring.utils.SimpleCounter;
 import com.epam.spring.utils.SimpleIdGenerator;
 
 public class MapTicketDao implements TicketDao {
-	
+
 	private Map<Integer, Ticket> tickets;
-	
+
 	public MapTicketDao() {
 		this.tickets = new HashMap<Integer, Ticket>();
-		
+
 		this.initCounter();
 		this.initIdGenerater();
 	}
@@ -32,10 +32,9 @@ public class MapTicketDao implements TicketDao {
 	private void initCounter() {
 		SimpleCounter.instanse().addDataType(DataType.TICKET);
 	}
-	
+
 	public void setTicket(Ticket order) {
-		tickets.put(SimpleIdGenerator.instanse().generate(DataType.TICKET), 
-				    order);
+		tickets.put(SimpleIdGenerator.instanse().generate(DataType.TICKET), order);
 		SimpleCounter.instanse().increase(DataType.TICKET);
 	}
 
@@ -56,21 +55,21 @@ public class MapTicketDao implements TicketDao {
 		List<Ticket> bookedTickets = new ArrayList<Ticket>();
 
 		for (Integer key : this.tickets.keySet()) {
-			if (this.equalsDateOfTickets(this.tickets.get(key), date) &&
-				this.equalsEventOfTickets(this.tickets.get(key), film)) {
+			if (this.equalsDateOfTickets(this.tickets.get(key), date)
+					&& this.equalsEventOfTickets(this.tickets.get(key), film)) {
 				bookedTickets.add(this.tickets.get(key));
 			}
 		}
 		return bookedTickets;
 	}
-	
+
 	private boolean equalsEventOfTickets(Ticket order, Event film) {
 		if (order.getDataOfSession().getFilm().equals(film)) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	private boolean equalsDateOfTickets(Ticket order, CustomerDate date) {
 		if (order.getDataOfSession().getDate().getFullDate().equals(date.getFullDate())) {
 			return true;

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.epam.spring.data.Event;
 import com.epam.spring.data.Ticket;
-import com.epam.spring.data.User;
 import com.epam.spring.date.CustomerDate;
 
 public interface TicketDao {
