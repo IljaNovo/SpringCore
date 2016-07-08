@@ -13,10 +13,9 @@ import com.epam.spring.utils.SimpleIdGenerator;
 public class MapEventDao implements EventDao {
 	private Map<Integer, Event> events;
 
-	
 	public MapEventDao() {
 		this.events = new HashMap<Integer, Event>();
-		
+
 		this.initCounter();
 		this.initIdGenerater();
 	}

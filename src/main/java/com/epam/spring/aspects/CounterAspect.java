@@ -14,23 +14,21 @@ public class CounterAspect {
 	private CounterByPriceDao byPriseBase;
 	private CounterByTicketsDao byTicketBase;
 	private EventDao eventBase;
-	
-	public CounterAspect(CounterByEventNameDao byEventNameBase,
-						 CounterByPriceDao byPriseBase,
-						 CounterByTicketsDao byTicketBase,
-					     EventDao eventBase) {
+
+	public CounterAspect(CounterByEventNameDao byEventNameBase, CounterByPriceDao byPriseBase,
+			CounterByTicketsDao byTicketBase, EventDao eventBase) {
 		this.byEventNameBase = byEventNameBase;
 		this.byPriseBase = byPriseBase;
 		this.byTicketBase = byTicketBase;
 		this.eventBase = eventBase;
 	}
-	
+
 	public Object incByTicket(ProceedingJoinPoint joinpoint) {
 		Object obj = null;
-		
-		this.byTicketBase.addEvent(((Ticket)joinpoint.getArgs()[1]).getDataOfSession().getFilm());
-		this.byTicketBase.increase(((Ticket)joinpoint.getArgs()[1]).getDataOfSession().getFilm());
-		
+
+		this.byTicketBase.addEvent(((Ticket) joinpoint.getArgs()[1]).getDataOfSession().getFilm());
+		this.byTicketBase.increase(((Ticket) joinpoint.getArgs()[1]).getDataOfSession().getFilm());
+
 		try {
 			obj = joinpoint.proceed();
 		} catch (Throwable e) {
@@ -38,12 +36,12 @@ public class CounterAspect {
 		}
 		return obj;
 	}
-	
+
 	public Object incByPrice(ProceedingJoinPoint joinpoint) {
 		Object obj = null;
 		this.byPriseBase.addEvent(this.eventBase.getEventByName((String) joinpoint.getArgs()[0]));
 		this.byPriseBase.increase(this.eventBase.getEventByName((String) joinpoint.getArgs()[0]));
-		
+
 		try {
 			obj = joinpoint.proceed();
 		} catch (Throwable e) {
@@ -51,9 +49,9 @@ public class CounterAspect {
 		}
 		return obj;
 	}
-	
+
 	public void incByEventName(Object obj) {
-		this.byEventNameBase.addEvent((Event)obj);
-		this.byEventNameBase.increase((Event)obj);
+		this.byEventNameBase.addEvent((Event) obj);
+		this.byEventNameBase.increase((Event) obj);
 	}
 }

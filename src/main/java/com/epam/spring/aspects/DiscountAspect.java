@@ -17,15 +17,13 @@ public class DiscountAspect {
 		Object obj = null;
 
 		final double PRECISION = 0.000001;
-		
+
 		try {
 			obj = joinpoint.proceed();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		if (!(Math.abs((Double) obj - 1) < PRECISION)) {
 			double discount = ((Double) obj) * ((Event) joinpoint.getArgs()[1]).getPrice();
 

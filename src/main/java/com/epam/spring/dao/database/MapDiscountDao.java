@@ -9,11 +9,11 @@ import com.epam.spring.data.User;
 public class MapDiscountDao implements DiscountDao {
 	private double totalDiscount;
 	private Map<User, Double> discountsBase;
-	
+
 	public MapDiscountDao() {
 		this.discountsBase = new HashMap<User, Double>();
 	}
-	
+
 	public double getTotalDiscount() {
 		return this.totalDiscount;
 	}
@@ -24,7 +24,7 @@ public class MapDiscountDao implements DiscountDao {
 		}
 		return this.discountsBase.get(customer);
 	}
-	
+
 	public void addUser(User customer) {
 		if (this.discountsBase.get(customer) == null) {
 			this.discountsBase.put(customer, 0.0);

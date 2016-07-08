@@ -1,17 +1,16 @@
 package com.epam.spring.data;
 
-
 import com.epam.spring.date.CustomerDate;
 
 public class User {
 	private String name;
 	private String email;
 	private CustomerDate birthday;
-	
+
 	public User() {
-		
+
 	}
-	
+
 	public User(String name, String email, CustomerDate birthdate) {
 		this.name = name;
 		this.email = email;

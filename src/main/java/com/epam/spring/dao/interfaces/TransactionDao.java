@@ -15,8 +15,8 @@ public interface TransactionDao {
 	void deleteTransaction(int index);
 
 	Map<Integer, Transaction> getAllTransactions();
-	
+
 	int getCountTicketsOf(User customer);
-	
+
 	List<Double> getTicketPrice(Event film, CustomerDate day, List<String> seats, User customer);
 }

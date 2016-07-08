@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
 	<bean id="event1" class="com.epam.spring.data.Event">
-		<constructor-arg value="eventName1"/>
-		<constructor-arg value="100.13"/>
-		<constructor-arg value="HIGH"/>
+		<constructor-arg value="eventName1" />
+		<constructor-arg value="100.13" />
+		<constructor-arg value="HIGH" />
 	</bean>
-	
+
 	<bean id="event2" class="com.epam.spring.data.Event">
-		<constructor-arg value="eventName2"/>
-		<constructor-arg value="120.13"/>
-		<constructor-arg value="MID"/>
+		<constructor-arg value="eventName2" />
+		<constructor-arg value="120.13" />
+		<constructor-arg value="MID" />
 	</bean>
-	
+
 	<bean id="event3" class="com.epam.spring.data.Event">
-		<constructor-arg value="eventName3"/>
-		<constructor-arg value="180.05"/>
-		<constructor-arg value="LOW"/>
+		<constructor-arg value="eventName3" />
+		<constructor-arg value="180.05" />
+		<constructor-arg value="LOW" />
 	</bean>
-	
+
 </beans>
