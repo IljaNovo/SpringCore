@@ -25,7 +25,10 @@ import com.epam.spring.servises.EventService;
 // Создаётся тикет
 // Создаётся транзакция на покупку
 // При этом высчитывается скидка на цену
+// Вычисляется количество обращений к ивенту по имени
+// Вычисляется скидка для конкретного пользователя
 // Если требуется, могу добавить ещё функционала в демо
+
 public class Demo {
 	public static void main(String[] args) {
 		ApplicationContext actx = new ClassPathXmlApplicationContext("all-beans.xml");
@@ -55,13 +58,10 @@ public class Demo {
         es.getEventByName("eventName1");
         es.getEventByName("eventName1");
         
-        es.getEventByName("eventName2");
-        es.getEventByName("eventName2");
-        
-        MapCounterByTicketsDao mcbend = (MapCounterByTicketsDao)actx.getBean("map_counter_by_ticket_dao");
-        System.out.println(mcbend.getCount(film));
+        MapCounterByEventNameDao mcbend = (MapCounterByEventNameDao)actx.getBean("map_counter_by_event_name_dao");
+        System.out.println("Количество обращений к фильму " + film.getName() + ": " + mcbend.getCount(film));
         
         MapDiscountDao mdd = (MapDiscountDao) actx.getBean("map_discount_dao");
-        System.out.println(mdd.getSpecificDiscount(customer));
+        System.out.println("Общая скидка для пользователя " + customer.getName() + ": " + mdd.getSpecificDiscount(customer));
 	}
 }

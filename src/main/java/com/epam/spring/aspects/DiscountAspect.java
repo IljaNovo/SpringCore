@@ -26,8 +26,7 @@ public class DiscountAspect {
 		
 		
 		
-		if (!((Math.abs((Double) obj - 1) < PRECISION))) {
-			System.out.println(obj);
+		if (!(Math.abs((Double) obj - 1) < PRECISION)) {
 			double discount = ((Double) obj) * ((Event) joinpoint.getArgs()[1]).getPrice();
 
 			this.discountBase.addUser((User) joinpoint.getArgs()[0]);
