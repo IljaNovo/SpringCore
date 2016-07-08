@@ -2,7 +2,7 @@ package com.epam.spring.dao.interfaces;
 
 import com.epam.spring.data.Event;
 
-public interface CounterByTicketDao {
+public interface CounterByTicketsDao {
 
 	int getCount(Event film);
 	

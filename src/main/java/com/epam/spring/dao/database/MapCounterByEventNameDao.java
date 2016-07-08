@@ -14,6 +14,9 @@ public class MapCounterByEventNameDao implements CounterByEventNameDao {
 	}
 
 	public int getCount(Event film) {
+		if (this.countAccessions.get(film) == null) {
+			return 0;
+		}
 		return this.countAccessions.get(film);
 	}
 

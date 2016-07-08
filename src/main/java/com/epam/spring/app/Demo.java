@@ -3,6 +3,10 @@ package com.epam.spring.app;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.epam.spring.dao.database.MapCounterByEventNameDao;
+import com.epam.spring.dao.database.MapCounterByPriceDao;
+import com.epam.spring.dao.database.MapCounterByTicketsDao;
+import com.epam.spring.dao.database.MapEventDao;
 import com.epam.spring.data.Auditorium;
 import com.epam.spring.data.Event;
 import com.epam.spring.data.Session;
@@ -12,6 +16,7 @@ import com.epam.spring.date.CustomerDate;
 import com.epam.spring.servises.AuditoriumService;
 import com.epam.spring.servises.BookingService;
 import com.epam.spring.servises.DiscountService;
+import com.epam.spring.servises.EventService;
 
 
 // Небольшое демо, здесь из контейнера берётся user, event
@@ -30,15 +35,36 @@ public class Demo {
 		
 		User customer = (User) actx.getBean("user2");
 		Event film = (Event)actx.getBean("event1");
+		Event film2 = (Event)actx.getBean("event2");
 		Session ses = new Session(film, room.getAuditoriums().get(0), new CustomerDate(2000, 07, 13));
 		
-		double price = film.getPrice() * disServise.getDiscount(customer, film, new CustomerDate(1995, 04, 20)); 
+		double price = film.getPrice() * disServise.getDiscount(customer, film, new CustomerDate(1995, 04, 20));
 		Ticket order = new Ticket(price, "1", ses);
 		
 		bookServece.bookTicket(customer, order);
 		
 		System.out.print("Количество заказов на " + new CustomerDate(2000, 01, 13).getFullDate() + " : ");
 		System.out.println(bookServece.getTicketsForEvent(film, new CustomerDate(2000, 07, 13)).size());
+        MapEventDao med = (MapEventDao) actx.getBean("map_event_dao");
+        med.setEvent(film);
+        med.setEvent(film2);
+        
+        EventService es = (EventService) actx.getBean("event-servise");
+        es.getEventByName("eventName1");
+        es.getEventByName("eventName1");
+        es.getEventByName("eventName1");
+        
+        es.getEventByName("eventName2");
+        es.getEventByName("eventName2");
+        
+        MapCounterByTicketsDao mcbend = (MapCounterByTicketsDao)actx.getBean("map_counter_by_ticket_dao");
+        System.out.println(mcbend.getCount(film));
+		
+        
+        
+		//MapCounterByEventNameDao counter = (MapCounterByEventNameDao) actx.getBean("map_counter_by_event_name_dao");
+		
+		//System.out.println(counter.getCount(film));
 		
 	}
 }

@@ -8,6 +8,10 @@ public class User {
 	private String email;
 	private CustomerDate birthday;
 	
+	public User() {
+		
+	}
+	
 	public User(String name, String email, CustomerDate birthdate) {
 		this.name = name;
 		this.email = email;

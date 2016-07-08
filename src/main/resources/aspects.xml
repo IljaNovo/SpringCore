@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="dao.xml"/>
+
+	<bean id="counterAspect" class="com.epam.spring.aspects.CounterAspect">
+		<constructor-arg ref="map_counter_by_event_name_dao"/>
+		<constructor-arg ref="map_counter_by_price_dao"/>
+		<constructor-arg ref="map_counter_by_ticket_dao"/>
+		<constructor-arg ref="map_event_dao"></constructor-arg>
+	</bean>
+</beans>

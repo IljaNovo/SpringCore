@@ -34,7 +34,7 @@ public class MapTransactionDao implements TransactionDao {
 		SimpleCounter.instanse().addDataType(DataType.TRANSACTION);
 	}
 
-	public void setTrancaction(User customer, Ticket order) {
+	public void setTransaction(User customer, Ticket order) {
 		transactions.put(SimpleIdGenerator.instanse().generate(DataType.TRANSACTION), new Transaction(customer, order));
 		SimpleCounter.instanse().increase(DataType.TRANSACTION);
 	}
