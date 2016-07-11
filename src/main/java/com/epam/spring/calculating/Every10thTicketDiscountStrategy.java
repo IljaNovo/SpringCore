@@ -1,9 +1,10 @@
 package com.epam.spring.calculating;
 
+import java.util.Calendar;
+
 import com.epam.spring.dao.interfaces.TransactionDao;
 import com.epam.spring.data.Event;
 import com.epam.spring.data.User;
-import com.epam.spring.date.CustomerDate;
 
 public class Every10thTicketDiscountStrategy implements DiscountStrategy {
 
@@ -15,7 +16,7 @@ public class Every10thTicketDiscountStrategy implements DiscountStrategy {
 		this.dataBase = dataBase;
 	}
 
-	public double calculate(User customer, Event film, CustomerDate date) {
+	public double calculate(User customer, Event film, Calendar date) {
 		if (this.dataBase.getCountTicketsOf(customer) == 0) {
 			return NO_DISCOUNT;
 		}

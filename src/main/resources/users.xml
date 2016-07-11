@@ -7,7 +7,7 @@
 		<constructor-arg value="Vasya" />
 		<constructor-arg value="vasya@epam.com" />
 		<constructor-arg>
-			<bean class="com.epam.spring.date.CustomerDate">
+			<bean class="java.util.GregorianCalendar">
 				<constructor-arg value="1993" />
 				<constructor-arg value="02" />
 				<constructor-arg value="24" />
@@ -19,7 +19,7 @@
 		<constructor-arg value="Gena" />
 		<constructor-arg value="gena@epam.com" />
 		<constructor-arg>
-			<bean class="com.epam.spring.date.CustomerDate">
+			<bean class="java.util.GregorianCalendar">
 				<constructor-arg value="1995" />
 				<constructor-arg value="04" />
 				<constructor-arg value="20" />
@@ -31,7 +31,7 @@
 		<constructor-arg value="Vasya" />
 		<constructor-arg value="vasya@epam.com" />
 		<constructor-arg>
-			<bean class="com.epam.spring.date.CustomerDate">
+			<bean class="java.util.GregorianCalendar">
 				<constructor-arg value="1994" />
 				<constructor-arg value="10" />
 				<constructor-arg value="5" />

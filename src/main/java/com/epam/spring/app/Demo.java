@@ -1,19 +1,18 @@
 package com.epam.spring.app;
 
+import java.util.GregorianCalendar;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epam.spring.dao.database.MapCounterByEventNameDao;
-import com.epam.spring.dao.database.MapCounterByPriceDao;
-import com.epam.spring.dao.database.MapCounterByTicketsDao;
 import com.epam.spring.dao.database.MapDiscountDao;
 import com.epam.spring.dao.database.MapEventDao;
-import com.epam.spring.data.Auditorium;
 import com.epam.spring.data.Event;
 import com.epam.spring.data.Session;
 import com.epam.spring.data.Ticket;
 import com.epam.spring.data.User;
-import com.epam.spring.date.CustomerDate;
+import com.epam.spring.date.CustomerDateUtil;
 import com.epam.spring.servises.AuditoriumService;
 import com.epam.spring.servises.BookingService;
 import com.epam.spring.servises.DiscountService;
@@ -43,15 +42,15 @@ public class Demo {
 		User customer = (User) actx.getBean("user2");
 		Event film = (Event) actx.getBean("event1");
 		Event film2 = (Event) actx.getBean("event2");
-		Session ses = new Session(film, room.getAuditoriums().get(0), new CustomerDate(2000, 07, 13));
+		Session ses = new Session(film, room.getAuditoriums().get(0), new GregorianCalendar(2000, 07, 13));
 
-		double price = film.getPrice() * disServise.getDiscount(customer, film, new CustomerDate(1995, 04, 20));
+		double price = film.getPrice() * disServise.getDiscount(customer, film, new GregorianCalendar(1995, 04, 20));
 		Ticket order = new Ticket(price, "1", ses);
 
 		bookServece.bookTicket(customer, order);
 
-		System.out.print("Количество заказов на " + new CustomerDate(2000, 01, 13).getFullDate() + " : ");
-		System.out.println(bookServece.getTicketsForEvent(film, new CustomerDate(2000, 07, 13)).size());
+		System.out.print("Количество заказов на " + CustomerDateUtil.getFullDate(new GregorianCalendar(2000, 01, 13)) + " : ");
+		System.out.println(bookServece.getTicketsForEvent(film, new GregorianCalendar(2000, 07, 13)).size());
 		MapEventDao med = (MapEventDao) actx.getBean("map_event_dao");
 		med.setEvent(film);
 		med.setEvent(film2);

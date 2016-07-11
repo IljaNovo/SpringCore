@@ -1,5 +1,6 @@
 package com.epam.spring.servises;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.epam.spring.dao.interfaces.EventDao;
@@ -8,7 +9,6 @@ import com.epam.spring.data.Auditorium;
 import com.epam.spring.data.Event;
 import com.epam.spring.data.Rating;
 import com.epam.spring.data.Session;
-import com.epam.spring.date.CustomerDate;
 
 public class EventService {
 
@@ -28,15 +28,15 @@ public class EventService {
 		this.eventDataBase.deleteEvent(index);
 	}
 
-	public List<Session> getForDateRange(CustomerDate from, CustomerDate to) {
+	public List<Session> getForDateRange(Calendar from, Calendar to) {
 		return sessionDataBase.getForDateRange(from, to);
 	}
 
-	public List<Session> getNextEvents(CustomerDate to) {
+	public List<Session> getNextEvents(Calendar to) {
 		return sessionDataBase.getNextEvents(to);
 	}
 
-	public void assignAuditorium(Event film, Auditorium room, CustomerDate date) {
+	public void assignAuditorium(Event film, Auditorium room, Calendar date) {
 		this.sessionDataBase.setSessions(film, room, date);
 	}
 

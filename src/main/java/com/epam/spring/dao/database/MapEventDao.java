@@ -6,7 +6,6 @@ import java.util.Map;
 import com.epam.spring.dao.interfaces.EventDao;
 import com.epam.spring.data.DataType;
 import com.epam.spring.data.Event;
-import com.epam.spring.data.Rating;
 import com.epam.spring.utils.SimpleCounter;
 import com.epam.spring.utils.SimpleIdGenerator;
 

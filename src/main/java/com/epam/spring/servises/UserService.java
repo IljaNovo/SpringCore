@@ -1,12 +1,12 @@
 package com.epam.spring.servises;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.epam.spring.dao.interfaces.TicketDao;
 import com.epam.spring.dao.interfaces.UserDao;
 import com.epam.spring.data.Ticket;
 import com.epam.spring.data.User;
-import com.epam.spring.date.CustomerDate;
 
 public class UserService {
 	private UserDao userDataBase;
@@ -17,7 +17,7 @@ public class UserService {
 		this.ticketDataBase = ticketDataBase;
 	}
 
-	public void register(String name, String email, CustomerDate birthdate) {
+	public void register(String name, String email, Calendar birthdate) {
 		userDataBase.setUser(name, email, birthdate);
 	}
 

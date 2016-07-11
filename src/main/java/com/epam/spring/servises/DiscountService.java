@@ -1,11 +1,11 @@
 package com.epam.spring.servises;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.epam.spring.calculating.DiscountStrategy;
 import com.epam.spring.data.Event;
 import com.epam.spring.data.User;
-import com.epam.spring.date.CustomerDate;
 
 public class DiscountService {
 
@@ -15,7 +15,7 @@ public class DiscountService {
 		this.strategy = strategy;
 	}
 
-	public double getDiscount(User user, Event event, CustomerDate date) {
+	public double getDiscount(User user, Event event, Calendar date) {
 		double maxDiscount = 1;
 		double currentDiscount = 1;
 

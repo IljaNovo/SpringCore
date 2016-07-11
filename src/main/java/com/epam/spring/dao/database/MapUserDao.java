@@ -1,6 +1,7 @@
 package com.epam.spring.dao.database;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +9,6 @@ import java.util.Map;
 import com.epam.spring.dao.interfaces.UserDao;
 import com.epam.spring.data.DataType;
 import com.epam.spring.data.User;
-import com.epam.spring.date.CustomerDate;
 import com.epam.spring.utils.SimpleCounter;
 import com.epam.spring.utils.SimpleIdGenerator;
 
@@ -40,7 +40,7 @@ public class MapUserDao implements UserDao {
 		SimpleCounter.instanse().reduce(DataType.USER);
 	}
 
-	public void setUser(String name, String email, CustomerDate birthdate) {
+	public void setUser(String name, String email, Calendar birthdate) {
 		users.put(SimpleIdGenerator.instanse().generate(DataType.USER), new User(name, email, birthdate));
 		SimpleCounter.instanse().increase(DataType.USER);
 	}
