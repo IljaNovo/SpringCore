@@ -13,7 +13,7 @@ public class DiscountAspect {
 		this.discountBase = discountBase;
 	}
 
-	public Object countDiscoun(ProceedingJoinPoint joinpoint) {
+	public Object countDiscount(ProceedingJoinPoint joinpoint) {
 		Object obj = null;
 		
 		Ticket order = (Ticket) joinpoint.getArgs()[1]; 

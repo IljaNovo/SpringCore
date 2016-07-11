@@ -9,9 +9,6 @@ public class BirthdayDiscountStrategy implements DiscountStrategy {
 	private static final double NO_DISCOUNT = 1;
 	private static final double YES_DISCOUNT = 0.95;
 
-	public BirthdayDiscountStrategy() {
-	}
-
 	public double calculate(User user, Event event, CustomerDate date) {
 
 		if (user.getBirthday().getFullDate().equals(date.getFullDate())) {

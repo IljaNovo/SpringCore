@@ -15,10 +15,6 @@ public class EventService {
 	private EventDao eventDataBase;
 	private SessionDao sessionDataBase;
 
-	public EventService() {
-
-	}
-
 	public EventService(EventDao eventDataBase, SessionDao sessionDataBase) {
 		this.eventDataBase = eventDataBase;
 		this.sessionDataBase = sessionDataBase;

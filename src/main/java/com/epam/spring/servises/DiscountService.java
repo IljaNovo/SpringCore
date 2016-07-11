@@ -11,9 +11,6 @@ public class DiscountService {
 
 	private List<DiscountStrategy> strategy;
 
-	public DiscountService() {
-	}
-
 	public DiscountService(List<DiscountStrategy> strategy) {
 		this.strategy = strategy;
 	}

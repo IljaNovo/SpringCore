@@ -7,10 +7,6 @@ public class User {
 	private String email;
 	private CustomerDate birthday;
 	private boolean luckyTicket;
-	
-	public User() {
-
-	}
 
 	public User(String name, String email, CustomerDate birthdate) {
 		this.name = name;

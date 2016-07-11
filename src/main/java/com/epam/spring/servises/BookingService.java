@@ -14,9 +14,6 @@ public class BookingService {
 	private TransactionDao transactDataBase;
 	private TicketDao ticketDataBase;
 
-	public BookingService() {
-	}
-
 	public BookingService(TransactionDao transactDataBase, TicketDao ticketDataBase) {
 		this.transactDataBase = transactDataBase;
 		this.ticketDataBase = ticketDataBase;

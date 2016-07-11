@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+// переделать в утильный класс
 public class CustomerDate {
 	private Calendar time;
 

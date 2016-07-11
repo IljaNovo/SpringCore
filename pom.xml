@@ -5,7 +5,7 @@
 	<artifactId>SpringCore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
-		<spring.ver>3.2.13.RELEASE</spring.ver>
+		<spring.ver>4.3.0.RELEASE</spring.ver>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -47,11 +47,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
 			<version>${spring.ver}</version>
-		</dependency>
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>3.2.4</version>
 		</dependency>
 	</dependencies>
 </project>
