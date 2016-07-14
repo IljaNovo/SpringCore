@@ -1,10 +1,10 @@
 package com.epam.spring.calculating;
 
+import java.util.Calendar;
+
 import com.epam.spring.data.Event;
 import com.epam.spring.data.User;
-import com.epam.spring.date.CustomerDate;
 
 public interface DiscountStrategy {
-	double calculate(User user, Event event, CustomerDate date);
-	
+	double calculate(User user, Event event, Calendar date);
 }

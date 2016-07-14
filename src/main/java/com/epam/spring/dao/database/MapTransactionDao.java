@@ -1,6 +1,7 @@
 package com.epam.spring.dao.database;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import com.epam.spring.data.Event;
 import com.epam.spring.data.Ticket;
 import com.epam.spring.data.Transaction;
 import com.epam.spring.data.User;
-import com.epam.spring.date.CustomerDate;
+import com.epam.spring.date.CustomerDateUtil;
 import com.epam.spring.utils.SimpleCounter;
 import com.epam.spring.utils.SimpleIdGenerator;
 
@@ -34,7 +35,7 @@ public class MapTransactionDao implements TransactionDao {
 		SimpleCounter.instanse().addDataType(DataType.TRANSACTION);
 	}
 
-	public void setTrancaction(User customer, Ticket order) {
+	public void setTransaction(User customer, Ticket order) {
 		transactions.put(SimpleIdGenerator.instanse().generate(DataType.TRANSACTION), new Transaction(customer, order));
 		SimpleCounter.instanse().increase(DataType.TRANSACTION);
 	}
@@ -59,7 +60,7 @@ public class MapTransactionDao implements TransactionDao {
 		return count;
 	}
 
-	public List<Double> getTicketPrice(Event film, CustomerDate day, List<String> seats, User customer) {
+	public List<Double> getTicketPrice(Event film, Calendar day, List<String> seats, User customer) {
 		List<Double> prices = new ArrayList<Double>();
 
 		for (Integer key : this.transactions.keySet()) {
@@ -70,14 +71,14 @@ public class MapTransactionDao implements TransactionDao {
 		return prices;
 	}
 
-	private boolean equalsAllAttributes(Transaction order, Event film, CustomerDate day, List<String> seats,
+	private boolean equalsAllAttributes(Transaction order, Event film, Calendar day, List<String> seats,
 			User customer) {
 		return this.equalsCustomers(order, customer) && this.equalsDay(order, day) && this.equalsEvents(order, film)
 				&& this.equalsSeats(order, seats);
 	}
 
-	private boolean equalsDay(Transaction order, CustomerDate day) {
-		if (order.getOrder().getDataOfSession().getDate().getFullDate().equals(day.getFullDate())) {
+	private boolean equalsDay(Transaction order, Calendar day) {
+		if (CustomerDateUtil.getFullDate(order.getOrder().getDataOfSession().getDate()).equals(CustomerDateUtil.getFullDate(day))) {
 			return true;
 		}
 		return false;

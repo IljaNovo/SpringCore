@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<import resource="dao.xml" />
+
+	<bean id="counterAspect" class="com.epam.spring.aspects.CounterAspect">
+		<constructor-arg ref="map_counter_by_event_name_dao" />
+		<constructor-arg ref="map_counter_by_price_dao" />
+		<constructor-arg ref="map_counter_by_ticket_dao" />
+		<constructor-arg ref="map_event_dao" />
+	</bean>
+
+	<bean id="discountAspect" class="com.epam.spring.aspects.DiscountAspect">
+		<constructor-arg ref="map_discount_dao" />
+	</bean>
+
+	<bean id="luckyWinnerAspect" class="com.epam.spring.aspects.LuckyWinnerAspect" />
+
+	<aop:config>
+		<aop:aspect id="luckyWinner" ref="luckyWinnerAspect">
+			<aop:around
+				pointcut="execution(* com.epam.spring.servises.BookingService.bookTicket(..))"
+				method="checkLucky" />
+		</aop:aspect>
+		<aop:aspect id="counter" ref="counterAspect">
+			<aop:around
+				pointcut="execution(* com.epam.spring.servises.BookingService.bookTicket(..))"
+				method="incByTicket" />
+			<aop:around
+				pointcut="execution(* com.epam.spring.servises.EventService.getEventPrice(..))"
+				method="incByPrice" />
+			<aop:after-returning returning="obj"
+				pointcut="execution(* com.epam.spring.servises.EventService.getEventByName(..))"
+				method="incByEventName" />
+		</aop:aspect>
+		<aop:aspect id="discount" ref="discountAspect">
+			<aop:around
+				pointcut="execution(* com.epam.spring.servises.BookingService.bookTicket(..))"
+				method="countDiscount" />
+		</aop:aspect>
+	</aop:config>
+</beans>

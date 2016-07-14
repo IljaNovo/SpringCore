@@ -13,4 +13,12 @@
 
 	<bean id="map_user_dao" class="com.epam.spring.dao.database.MapUserDao" />
 
+	<bean id="map_counter_by_event_name_dao" class="com.epam.spring.dao.database.MapCounterByEventNameDao" />
+
+	<bean id="map_counter_by_price_dao" class="com.epam.spring.dao.database.MapCounterByPriceDao" />
+
+	<bean id="map_counter_by_ticket_dao" class="com.epam.spring.dao.database.MapCounterByTicketsDao" />
+
+	<bean id="map_discount_dao" class="com.epam.spring.dao.database.MapDiscountDao" />
+
 </beans>

@@ -1,13 +1,13 @@
 package com.epam.spring.data;
 
-import com.epam.spring.date.CustomerDate;
+import java.util.Calendar;
 
 public class Session {
 	private Event film;
 	private Auditorium room;
-	private CustomerDate date;
-	
-	public Session(Event film, Auditorium room,  CustomerDate date) {
+	private Calendar date;
+
+	public Session(Event film, Auditorium room, Calendar date) {
 		this.film = film;
 		this.room = room;
 		this.date = date;
@@ -21,7 +21,7 @@ public class Session {
 		return room;
 	}
 
-	public CustomerDate getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 }
